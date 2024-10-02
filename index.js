@@ -14,13 +14,22 @@ const port = process.env.PORT || 5000;
 connectDB();
 app.use(helmet());
 
+const allowedDomains = [
+  "http://localhost:5173",
+  "https://appointmentapi.codesang.me",
+  "https://appointment.codesang.me/",
+];
+
 const corsOptions = {
-  origin: "http://localhost:5173",
+  origin: function (origin, callback) {
+    if (allowedDomains.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
-  // allowedHeaders: "*",
-  // origin: "*",
-  // optionsSuccessStatus: 200,
 };
 
 app.use(cors(corsOptions));

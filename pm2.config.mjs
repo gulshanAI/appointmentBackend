@@ -6,7 +6,7 @@ export default {
       args: "run start",
       env: {
         NODE_ENV: "production",
-        PORT: 3002,
+        PORT: 3001,
       },
     },
   ],
