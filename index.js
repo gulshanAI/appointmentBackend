@@ -16,6 +16,7 @@ app.use(helmet());
 
 const allowedDomains = [
   "http://localhost:5173",
+  "http://localhost:3000",
   "https://appointmentapi.codesang.me",
   "https://appointment.codesang.me/",
 ];
